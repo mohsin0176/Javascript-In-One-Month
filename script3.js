@@ -1,5 +1,8 @@
 
 //Basic operators
 
-var yearJohn = 2018-28;
-console.log(yearJohn);
+var year  = 2018;
+var yearJohn = year-28;
+var yearMark = year -33;
+console.log("John birth year is : " + yearJohn + 
+" and Mark birth year is : "+ yearMark);
