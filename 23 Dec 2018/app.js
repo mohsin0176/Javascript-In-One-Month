@@ -27,6 +27,7 @@ activePlayer = 0;
 // document.querySelector(".btn-roll").addEventListener('click',function(){
 //     console.log("button clicked inside event listener");
 // });
+//
 
 document.querySelector(".dice").style.display = "none";
 
