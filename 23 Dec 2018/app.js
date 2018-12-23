@@ -50,16 +50,29 @@ document.querySelector(".btn-roll").addEventListener('click',function(){
         document.getElementById("current-" + activePlayer).textContent = roundScore;
     }    
     else{
-        //next player
-        activePlayer = activePlayer == 0 ? 1 : 0;
-        roundScore = 0;
-        document.getElementById("current-0").textContent = "0";
-        document.getElementById("current-1").textContent = "0";
-        //my logic
-        // activePlayer === 1 ? document.querySelector(".player-0-panel").classList.remove("active") : document.querySelector(".player-1-panel").classList.remove("active");  
-        // activePlayer === 1 ? document.querySelector(".player-1-panel").classList.add("active") : document.querySelector(".player-0-panel").classList.add("active");           
-        document.querySelector(".player-0-panel").classList.toggle("active");
-        document.querySelector(".player-1-panel").classList.toggle("active");
-        document.querySelector(".dice").style.display = "none";
+        nextPlayer();
     }
 });
+
+document.querySelector(".btn-hold").addEventListener("click",function(){
+    //add current score to global score
+    scores[activePlayer] += roundScore;
+    //update the UI 
+    document.querySelector("#score-" + activePlayer).textContent = scores[activePlayer];
+    nextPlayer();
+    //Check if the player won the game
+});
+
+function nextPlayer(){
+    //next player
+    activePlayer = activePlayer == 0 ? 1 : 0;
+    roundScore = 0;
+    document.getElementById("current-0").textContent = "0";
+    document.getElementById("current-1").textContent = "0";
+    //my logic
+    // activePlayer === 1 ? document.querySelector(".player-0-panel").classList.remove("active") : document.querySelector(".player-1-panel").classList.remove("active");  
+    // activePlayer === 1 ? document.querySelector(".player-1-panel").classList.add("active") : document.querySelector(".player-0-panel").classList.add("active");           
+    document.querySelector(".player-0-panel").classList.toggle("active");
+    document.querySelector(".player-1-panel").classList.toggle("active");
+    document.querySelector(".dice").style.display = "none";
+}
