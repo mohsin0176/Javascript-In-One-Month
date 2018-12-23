@@ -63,8 +63,9 @@ document.querySelector(".btn-hold").addEventListener("click",function(){
     //Check if the player won the game
     if(scores[activePlayer] >= 20){
         document.querySelector("#name-" + activePlayer).textContent = "Winner!!";
-        document.querySelector(".btn-roll").classList.add("disabled");
-        document.querySelector(".btn-hold").classList.add("disabled");
+        document.querySelector(".dice").style.style = "none";
+        document.querySelector(".player-"+activePlayer+"-panel").classList.add("winner");
+        document.querySelector(".player-"+activePlayer+"-panel").classList.remove("active");
     } 
     else{
         nextPlayer();
