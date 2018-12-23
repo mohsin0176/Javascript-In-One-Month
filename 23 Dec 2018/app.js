@@ -59,8 +59,16 @@ document.querySelector(".btn-hold").addEventListener("click",function(){
     scores[activePlayer] += roundScore;
     //update the UI 
     document.querySelector("#score-" + activePlayer).textContent = scores[activePlayer];
-    nextPlayer();
+    
     //Check if the player won the game
+    if(scores[activePlayer] >= 20){
+        document.querySelector("#name-" + activePlayer).textContent = "Winner!!";
+        document.querySelector(".btn-roll").classList.add("disabled");
+        document.querySelector(".btn-hold").classList.add("disabled");
+    } 
+    else{
+        nextPlayer();
+    }    
 });
 
 function nextPlayer(){
