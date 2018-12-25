@@ -19,6 +19,7 @@ var Person = function(name, yearOfBirth, job){
 Person.prototype.anotherCalculateAge = function(){
     console.log("this is also can be used");
 }
+Person.prototype.lastName = "Smith";
 
 var john = new Person("John",1990,"Teacher");
 
@@ -31,3 +32,4 @@ jane.calculateAge();
 mark.calculateAge();
 
 mark.anotherCalculateAge();
+console.log(john.lastName);
