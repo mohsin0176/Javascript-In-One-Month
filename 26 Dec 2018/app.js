@@ -24,6 +24,32 @@ var budgetController = (function(){
             inc : 0
         }
     };
+
+    return {
+        addItem : function(type, des, val){
+            var newItem;
+            
+            // create new id
+            // ID = last ID + 1
+            ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            
+            //create new item based  on "inc" or "exp" type
+            if(type === "exp"){
+                newItem = new Expense(ID,des, val);
+            }else if(type === "inc"){
+                newItem = new Income(ID, des, val);
+            }      
+            
+            //pusht it into our data structure
+            data.allItems[type].push(newItem);
+            //look, this [type] will only be either "inc" or "exp".
+            //so, here instead of using if else, we have used this
+            //small trick 
+
+            // return the new element
+            return newItem;
+        }
+    }
 })();
 
 
