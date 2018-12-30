@@ -67,6 +67,21 @@ var budgetController = (function(){
             return newItem;
         },
 
+        deleteItem : function(type, id){
+            var ids, index; 
+            // we have used similar type of special function
+            // in foreach. but in map, this function always 
+            // return an array. this is the difference between
+            // foreach and map
+            ids = data.allItems[type].map(function(current){
+                return current.id;
+            });
+            index = ids.indexOf(id);
+            if(index !== -1){
+                data.allItems[type].splice(index,1);
+            }
+        },
+
         calcualgeBudget : function(){
             // calculate total income and expenses
             calculateTotal("exp");
@@ -236,15 +251,15 @@ var controller = (function(budgetCtrl, UICtrl){
     };
     var ctrlDeleteItem = function(event){
         var itemID, splitID, type, ID;
-        itemID = console.log(event.target.parentNode.parentNode.parentNode.id);
+        itemID = event.target.parentNode.parentNode.parentNode.id;
         if(itemID){
             splitID = itemID.split('-');
             type = splitID[0];
-            ID = splitID[1];
+            ID = parseInt(splitID[1]);
 
             //to do
             //1. delete item from the data structure
-
+            budgetCtrl.deleteItem(type,ID);
             //2. delte item from UI
 
             //3. update and show the new budget
