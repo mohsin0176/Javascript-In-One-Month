@@ -192,6 +192,13 @@ var controller = (function(budgetCtrl, UICtrl){
                 ctrlAddItem();            
             }
         });
+        /* note
+        here we will add event listener to the income and
+        expense items, but these are generated after clicking
+        the add button. so, we will add event to these 
+        using there parent object in dom. there method is 
+        called event delegation
+        */
     };    
 
     var updateBudget = function(){
