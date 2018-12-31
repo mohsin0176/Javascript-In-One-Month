@@ -6,6 +6,11 @@ var budgetController = (function(){
         this.id = id;
         this.description = description;
         this.value = value;        
+        this.percentage = -1;
+    };
+
+    Expense.prototype.calcPercentage = function(totalIncome){
+        
     };
 
     var Income = function(id, description, value){
@@ -96,6 +101,20 @@ var budgetController = (function(){
             }else{
                 data.percentage = -1;
             }            
+        },
+
+        calculagePercentages : function(){
+            /*
+            expenses :
+            a = 20
+            b = 10
+            c = 40
+            income = 100
+            percentage :
+            a = 20/1000 * 100 = 20%
+            b = 10/1000 * 100 = 10%
+            c = 40/1000 * 100 = 40%
+            */
         },
 
         getBudget : function(){
@@ -233,7 +252,15 @@ var controller = (function(budgetCtrl, UICtrl){
 
         //3. Display the budget on the UI
         UICtrl.displayBudget(budget);
-    }
+    };
+
+    var updatePercentages = function(){
+        //1. calculate the percentages
+
+        //2. read percentage from the budget controller
+
+        //3. update the UI with the new percentages
+    };
 
     var ctrlAddItem = function(){
         var input, newItem;
@@ -252,6 +279,9 @@ var controller = (function(budgetCtrl, UICtrl){
 
             //5. Calculate and update budget
             updateBudget();
+
+            //6. Calculate and update percentages
+            updatePercentages();
         }                
     };
     var ctrlDeleteItem = function(event){
@@ -271,6 +301,9 @@ var controller = (function(budgetCtrl, UICtrl){
 
             //3. update and show the new budget
             updateBudget();
+
+            //4. calculate and update percentages
+            updatePercentages();
         }
     };
     return {
